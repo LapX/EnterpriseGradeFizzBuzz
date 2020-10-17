@@ -11,4 +11,6 @@ repositories {
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib"
+    compile "org.glassfish.jersey.containers:jersey-container-grizzly2-http:2.26"
+    compile "org.glassfish.jersey.inject:jersey-hk2:2.26"
 }
