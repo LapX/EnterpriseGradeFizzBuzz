@@ -1,11 +1,17 @@
 package service
 
+import service.dto.FizzBuzzDto
+
 class FizzBuzzService {
-    fun getFizz(): String {
-        return "Fizz"
+    fun getFizz(): FizzBuzzDto {
+        return FizzBuzzDto("Fizz")
     }
 
-    fun convertToFizzBuzz(): String {
-        return "FizzBuzz"
+    fun getBuzz(): FizzBuzzDto {
+        return FizzBuzzDto("Buzz")
+    }
+
+    fun convertToFizzBuzz(fizzBuzzRequest: FizzBuzzDto): FizzBuzzDto {
+        return FizzBuzzDto(fizzBuzzRequest.fizzBuzz)
     }
 }
