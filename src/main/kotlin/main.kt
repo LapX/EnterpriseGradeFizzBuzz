@@ -1,3 +1,7 @@
+import resource.FizzBuzzResource
+import service.FizzBuzzService
+
 fun main(args: Array<String>) {
-    println("Hello, world!")
+    val fizzBuzzService = FizzBuzzService()
+    FizzBuzzResource(fizzBuzzService)
 }
