@@ -1,4 +1,3 @@
-import jaxrs.Application
 import org.glassfish.jersey.grizzly2.httpserver.GrizzlyHttpServerFactory
 import javax.ws.rs.core.UriBuilder
 
@@ -7,7 +6,7 @@ fun main(args: Array<String>) {
         .port(8080)
         .build()
 
-    val httpServer = GrizzlyHttpServerFactory.createHttpServer(
+    GrizzlyHttpServerFactory.createHttpServer(
         url,
         Application(),
         true
