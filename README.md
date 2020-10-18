@@ -1,1 +1,1 @@
-# EntrepriseGradeFizzBuzz
+# EnterpriseGradeFizzBuzz
