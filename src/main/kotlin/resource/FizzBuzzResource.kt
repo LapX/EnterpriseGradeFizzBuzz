@@ -13,14 +13,8 @@ class FizzBuzzResource(private val fizzBuzzService: FizzBuzzService) {
     init {
         get("/fizz") { request, response -> getFizz(request, response) }
         get("/buzz") { request, response -> getBuzz(request, response) }
+        get("/fizzBuzz") { request, response -> getFizzBuzz(request, response) }
         post("/fizzBuzz") { request, response -> convertToFizzBuzz(request, response) }
-    }
-
-    private fun convertToFizzBuzz(request: Request?, response: Response?): String {
-        val fizzBuzzRequest = Gson().fromJson(request?.body(), FizzBuzzDto::class.java)
-        val fizzBuzzResponse = fizzBuzzService.convertToFizzBuzz(fizzBuzzRequest)
-        response?.type("application/json")
-        return Gson().toJson(fizzBuzzResponse)
     }
 
     private fun getFizz(request: Request?, response: Response?): String? {
@@ -31,6 +25,19 @@ class FizzBuzzResource(private val fizzBuzzService: FizzBuzzService) {
 
     private fun getBuzz(request: Request?, response: Response?): String? {
         val fizzBuzzResponse = fizzBuzzService.getBuzz()
+        response?.type("application/json")
+        return Gson().toJson(fizzBuzzResponse)
+    }
+
+    private fun getFizzBuzz(request: Request?, response: Response?): String? {
+        val fizzBuzzResponse = fizzBuzzService.getFizzBuzz()
+        response?.type("application/json")
+        return Gson().toJson(fizzBuzzResponse)
+    }
+
+    private fun convertToFizzBuzz(request: Request?, response: Response?): String {
+        val fizzBuzzRequest = Gson().fromJson(request?.body(), FizzBuzzDto::class.java)
+        val fizzBuzzResponse = fizzBuzzService.convertToFizzBuzz(fizzBuzzRequest)
         response?.type("application/json")
         return Gson().toJson(fizzBuzzResponse)
     }

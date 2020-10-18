@@ -11,6 +11,10 @@ class FizzBuzzService {
         return FizzBuzzDto("Buzz")
     }
 
+    fun getFizzBuzz(): FizzBuzzDto {
+        return FizzBuzzDto("FizzBuzz")
+    }
+
     fun convertToFizzBuzz(fizzBuzzRequest: FizzBuzzDto): FizzBuzzDto {
         return FizzBuzzDto(fizzBuzzRequest.fizzBuzz)
     }
