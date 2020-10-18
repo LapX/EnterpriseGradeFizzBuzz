@@ -10,8 +10,11 @@ repositories {
     mavenCentral()
 }
 dependencies {
-    compile(
+    implementation(
         group = "com.sparkjava", name = "spark-core", version = "2.9.3"
+    )
+    implementation(
+        group = "com.google.code.gson", name = "gson", version = "2.8.6"
     )
     testImplementation(kotlin("test-junit5"))
 }
