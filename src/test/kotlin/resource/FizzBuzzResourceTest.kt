@@ -1,9 +1,10 @@
 package resource
 
 import com.google.common.truth.Truth.assertThat
+import domain.FizzBuzzChainCreator
+import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
-import org.mockito.InjectMocks
 import org.mockito.Mock
 import org.mockito.Mockito
 import org.mockito.junit.jupiter.MockitoExtension
@@ -19,7 +20,7 @@ internal class FizzBuzzResourceTest {
     private val NUMBER_JSON = "{\"fizzBuzz\":\"2\"}"
 
     @Mock
-    lateinit var fizzBuzzService: FizzBuzzService
+    lateinit var fizzBuzzChainCreator: FizzBuzzChainCreator
 
     @Mock
     lateinit var request: Request
@@ -27,8 +28,14 @@ internal class FizzBuzzResourceTest {
     @Mock
     lateinit var response: Response
 
-    @InjectMocks
+    lateinit var fizzBuzzService: FizzBuzzService
     lateinit var fizzBuzzResource: FizzBuzzResource
+
+    @BeforeEach
+    fun setup() {
+        fizzBuzzService = FizzBuzzService(fizzBuzzChainCreator)
+        fizzBuzzResource = FizzBuzzResource(fizzBuzzService)
+    }
 
     @Test
     fun whenGetFizz_thenReturnIsValid() {

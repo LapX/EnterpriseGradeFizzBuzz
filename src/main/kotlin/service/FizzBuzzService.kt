@@ -1,8 +1,9 @@
 package service
 
+import domain.FizzBuzzChainCreator
 import service.dto.FizzBuzzDto
 
-open class FizzBuzzService {
+open class FizzBuzzService(val fizzBuzzChainCreator: FizzBuzzChainCreator) {
     fun getFizz(): FizzBuzzDto {
         return FizzBuzzDto("Fizz")
     }
@@ -16,6 +17,8 @@ open class FizzBuzzService {
     }
 
     fun convertToFizzBuzz(fizzBuzzRequest: FizzBuzzDto): FizzBuzzDto {
-        return FizzBuzzDto(fizzBuzzRequest.fizzBuzz)
+        val divisionHandler = fizzBuzzChainCreator.createChain()
+        val result = divisionHandler.handle(fizzBuzzRequest.fizzBuzz.toInt())
+        return FizzBuzzDto(result)
     }
 }
