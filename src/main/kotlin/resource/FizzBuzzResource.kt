@@ -17,25 +17,25 @@ class FizzBuzzResource(private val fizzBuzzService: FizzBuzzService) {
         post("/fizzBuzz") { request, response -> convertToFizzBuzz(request, response) }
     }
 
-    private fun getFizz(request: Request?, response: Response?): String? {
+    fun getFizz(request: Request?, response: Response?): String? {
         val fizzBuzzResponse = fizzBuzzService.getFizz()
         response?.type("application/json")
         return Gson().toJson(fizzBuzzResponse)
     }
 
-    private fun getBuzz(request: Request?, response: Response?): String? {
+    fun getBuzz(request: Request?, response: Response?): String? {
         val fizzBuzzResponse = fizzBuzzService.getBuzz()
         response?.type("application/json")
         return Gson().toJson(fizzBuzzResponse)
     }
 
-    private fun getFizzBuzz(request: Request?, response: Response?): String? {
+    fun getFizzBuzz(request: Request?, response: Response?): String? {
         val fizzBuzzResponse = fizzBuzzService.getFizzBuzz()
         response?.type("application/json")
         return Gson().toJson(fizzBuzzResponse)
     }
 
-    private fun convertToFizzBuzz(request: Request?, response: Response?): String {
+    fun convertToFizzBuzz(request: Request?, response: Response?): String {
         val fizzBuzzRequest = Gson().fromJson(request?.body(), FizzBuzzDto::class.java)
         val fizzBuzzResponse = fizzBuzzService.convertToFizzBuzz(fizzBuzzRequest)
         response?.type("application/json")

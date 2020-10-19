@@ -2,7 +2,7 @@ package service
 
 import service.dto.FizzBuzzDto
 
-class FizzBuzzService {
+open class FizzBuzzService {
     fun getFizz(): FizzBuzzDto {
         return FizzBuzzDto("Fizz")
     }
